@@ -27,19 +27,7 @@ jobs:
            sudo apt-get install trivy -y
            #scanning files
            trivy fs .
-      - name: Docker build and push
-        run: |
-          #run commands to build and push docker images
-          docker buildx build [OPTIONS] PATH | URL | -
-          docker buildx build -t netflix:latest ./path-to-directory
-          docker buildx build -t netflix:latest https://github.com/user/repo.git
-          curl -L https://example.com/context.tar.gz | docker buildx build -t netflix:latest -
-          docker buildx build -t netflex:latest
-          docker buildx build -t netflex:latest .
-          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-          docker push vineetha11/netflix:latest
-          env:
-          DOCKER_CLI_ACI: 1
+      
   deploy:
     needs: build-analyze-scan
     runs-on: [aws-netflix]
