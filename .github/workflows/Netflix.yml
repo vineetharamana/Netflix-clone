@@ -30,7 +30,7 @@ jobs:
       - name: Docker build and push
         run: |
           #run commands to build and push docker images
-          docker build --build-arg TMDB_V3_API_KEY= 0d18232463f71b95e8c62f24814cfe26 -t netflix .
+          docker build -t netflix .
           docker tag netflix vineetha11/netflix:latest
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker push vineetha11/netflix:latest
